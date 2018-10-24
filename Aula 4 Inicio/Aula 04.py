@@ -7,7 +7,11 @@ def main(): #parametros de Display
     pygame.display.set_caption("Iniciando com PyGame") #Exibindo titulo do game
     relogio = pygame.time.Clock()
     cor_branca = (255,255,255)
+    cor_azul = (108,194,236) #variaveius de corer, # RGB
+    cor_verde = (152,231,114)
     sup = pygame.Surface((200, 200))
+    sup.fill(cor_azul)
+
     
     sair = False
 
@@ -17,7 +21,7 @@ def main(): #parametros de Display
                 sair = True #no momento que o sair passa a ser True, ele sai do while e executa o Quit
         relogio.tick(27) #tick pra atualizar
         tela.fill(cor_branca) #preencher o fundo da tela com cor branca
-        tela.blit(sup, [10,10]) #chamando a superficie
+        tela.blit(sup, [50,50]) #chamando a superficie
         pygame.display.update() #Chamar atualização na Tela
         
     pygame.quit() #Quita o game ao clicar no X
