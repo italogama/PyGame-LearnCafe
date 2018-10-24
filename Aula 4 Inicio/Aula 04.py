@@ -25,8 +25,19 @@ def main(): #parametros de Display
         for event in pygame.event.get(): #ao clicar no X ele entra na condição IF
             if event.type == pygame.QUIT: #se o evento recebido for o QUIT, o sair passa a ser True
                 sair = True #no momento que o sair passa a ser True, ele sai do while e executa o Quit
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                ret = ret.move(10, 10) #Movimenta o retangulo ao clicar
+                
+            #if event.type == pygame.MOUSEBUTTONDOWN:
+                #ret = ret.move(10, 10) #Movimenta o retangulo ao clicar
+
+            #if event.type == pygame.MOUSEMOTION:
+                #ret = ret.move(-10, -10)
+
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    ret.move(-10, 0)
+                
+
         relogio.tick(27) #tick pra atualizar
         tela.fill(cor_branca) #preencher o fundo da tela com cor branca
         tela.blit(sup, [50,50]) #chamando a superficie
