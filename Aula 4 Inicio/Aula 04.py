@@ -35,7 +35,22 @@ def main(): #parametros de Display
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    ret.move(-10, 0)
+                    ret.move_ip(-10, 0)  #utiliza move_ip para movimentar com teclado
+
+                if event.key == pygame.K_RIGHT:
+                    ret.move_ip(10, 0)
+
+                if event.key == pygame.K_UP:
+                    ret.move_ip(0, -10)
+
+                if event.key == pygame.K_DOWN:
+                    ret.move_ip(0, 10)
+
+                if event.key == pygame.K_SPACE:
+                    ret.move_ip(10, 10)
+
+                if event.key == pygame.K_BACKSPACE:
+                    ret.move_ip(-10, -10)
                 
 
         relogio.tick(27) #tick pra atualizar
