@@ -26,8 +26,8 @@ def main(): #parametros de Display
             if event.type == pygame.QUIT: #se o evento recebido for o QUIT, o sair passa a ser True
                 sair = True #no momento que o sair passa a ser True, ele sai do while e executa o Quit
                 
-            #if event.type == pygame.MOUSEBUTTONDOWN:
-                #ret = ret.move(10, 10) #Movimenta o retangulo ao clicar
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                ret = ret.move(15, 150) #Movimenta o retangulo ao clicar
 
             #if event.type == pygame.MOUSEMOTION:
                 #ret = ret.move(-10, -10)
@@ -53,11 +53,14 @@ def main(): #parametros de Display
                     ret.move_ip(-10, -10)
                 
 
-        relogio.tick(27) #tick pra atualizar
+        relogio.tick(30) #tick pra atualizar
         tela.fill(cor_branca) #preencher o fundo da tela com cor branca
         tela.blit(sup, [50,50]) #chamando a superficie
         tela.blit(sup2, [250,50]) #chamando a superficie 2
         tela.blit(sup2, [250,150])
+        (ret.left, ret.top) = pygame.mouse.get_pos() #Evento de captura do mouse
+        ret.left -= ret.width/2   #Coloca cursos no centro do objeto ret
+        ret.top -= ret.height/2
         pygame.draw.rect(tela, cor_vermelha, ret) #inserindo retangulo
         pygame.display.update() #Chamar atualização na Tela
         
