@@ -8,9 +8,12 @@ def main(): #parametros de Display
     relogio = pygame.time.Clock()
     cor_branca = (255,255,255)
     cor_azul = (108,194,236) #variaveius de corer, # RGB
-    cor_verde = (152,231,114)
+    cor_verde = (54,182,112)
     sup = pygame.Surface((200, 200))
     sup.fill(cor_azul)
+
+    sup2 = pygame.Surface((100, 100))
+    sup2.fill(cor_verde)
 
     
     sair = False
@@ -22,6 +25,8 @@ def main(): #parametros de Display
         relogio.tick(27) #tick pra atualizar
         tela.fill(cor_branca) #preencher o fundo da tela com cor branca
         tela.blit(sup, [50,50]) #chamando a superficie
+        tela.blit(sup2, [250,50]) #chamando a superficie 2
+        tela.blit(sup2, [250,150])
         pygame.display.update() #Chamar atualização na Tela
         
     pygame.quit() #Quita o game ao clicar no X
