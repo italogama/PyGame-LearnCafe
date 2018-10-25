@@ -28,6 +28,8 @@ def main(): #parametros de Display
     font_padrao = pygame.font.get_default_font()
     fonte_perdeu = pygame.font.SysFont(font_padrao, 45)
     fonte_ganhou = pygame.font.SysFont(font_padrao, 30)
+
+    audio_explosao = pygame.mixer.Sound(AUDIOS.ogg)
         
     while sair != True: #Loop de while, cria uma variavel do tipo event que recebe um evento
         for event in pygame.event.get(): #ao clicar no X ele entra na condição IF
