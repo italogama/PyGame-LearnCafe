@@ -60,9 +60,15 @@ def main(): #parametros de Display
         tela.blit(sup, [50,50]) #chamando a superficie
         tela.blit(sup2, [250,50]) #chamando a superficie 2
         tela.blit(sup2, [250,150])
+        
+        (xant, yant) = (ret.left, ret.top)
         (ret.left, ret.top) = pygame.mouse.get_pos() #Evento de captura do mouse
         ret.left -= ret.width/2   #Coloca cursos no centro do objeto ret
         ret.top -= ret.height/2
+        if ret.colliderect(ret2): #testando colisão com objeto
+            print("opa")
+            (ret.left, ret.top) = (xant, yant)
+        
         pygame.draw.rect(tela, cor_vermelha, ret) #inserindo retangulo
         pygame.draw.rect(tela, cor_rosa, ret2)
         pygame.display.update() #Chamar atualização na Tela
