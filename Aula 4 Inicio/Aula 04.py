@@ -7,9 +7,10 @@ def main(): #parametros de Display
     pygame.display.set_caption("Iniciando com PyGame") #Exibindo titulo do game
     relogio = pygame.time.Clock()
     cor_branca = (255,255,255)
-    cor_azul = (108,194,236) #variaveius de corer, # RGB
+    cor_azul = (108,194,236) #variaveis de corer, # RGB
     cor_verde = (54,182,112)
     cor_vermelha = (227,57,9)
+    cor_rosa = (253, 147, 226)
     sup = pygame.Surface((200, 200))
     sup.fill(cor_azul)
 
@@ -17,6 +18,7 @@ def main(): #parametros de Display
     sup2.fill(cor_verde)
 
     ret = pygame.Rect(10, 10, 45, 45)
+    ret2 = pygame.Rect(80, 100, 100, 60)
 
     
     sair = False
@@ -27,7 +29,7 @@ def main(): #parametros de Display
                 sair = True #no momento que o sair passa a ser True, ele sai do while e executa o Quit
                 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                ret = ret.move(15, 150) #Movimenta o retangulo ao clicar
+                pygame.mouse.set_pos(150, 150) #Movimenta o retangulo ao clicar
 
             #if event.type == pygame.MOUSEMOTION:
                 #ret = ret.move(-10, -10)
@@ -62,6 +64,7 @@ def main(): #parametros de Display
         ret.left -= ret.width/2   #Coloca cursos no centro do objeto ret
         ret.top -= ret.height/2
         pygame.draw.rect(tela, cor_vermelha, ret) #inserindo retangulo
+        pygame.draw.rect(tela, cor_rosa, ret2)
         pygame.display.update() #Chamar atualização na Tela
         
     pygame.quit() #Quita o game ao clicar no X
