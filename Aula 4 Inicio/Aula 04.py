@@ -29,7 +29,7 @@ def main(): #parametros de Display
     fonte_perdeu = pygame.font.SysFont(font_padrao, 45)
     fonte_ganhou = pygame.font.SysFont(font_padrao, 30)
 
-    audio_explosao = pygame.mixer.Sound(AUDIOS.ogg)
+    audio_explosao = pygame.mixer.Sound('AUDIOS.ogg')
         
     while sair != True: #Loop de while, cria uma variavel do tipo event que recebe um evento
         for event in pygame.event.get(): #ao clicar no X ele entra na condição IF
@@ -75,6 +75,8 @@ def main(): #parametros de Display
         ret.top -= ret.height/2
         if ret.colliderect(ret2): #testando colisão com objeto
             text = fonte_perdeu.render('COLIDIU', 1, (cor_vermelha)) #printando perdeu 
+            audio_explosao.play()
+            audio_explosao.set_volume(00.1)
             tela.blit(text, (150, 150))
             (ret.left, ret.top) = (xant, yant)
         
