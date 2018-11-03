@@ -15,7 +15,7 @@ def main(): #parametros de Display
     sup.fill(cor_azul)
     
     ret = pygame.Rect(10, 10, 30, 30)
-    ret2 = pygame.Rect(10, 40, 560, 20)
+    ret2 = pygame.Rect(10, 40, 555, 6)
     sair = False
 
     pygame.font.init()
@@ -44,11 +44,17 @@ def main(): #parametros de Display
         ret.top -= ret.height/2
         if ret.colliderect(ret2): #testando colisão com objeto
             text = fonte_perdeu.render('COLIDIU', 1, (cor_vermelha)) #printando perdeu 
+            tela.blit(text, (150, 150))
             audio_explosao.play()
             audio_explosao.set_volume(00.1)
-            tela.blit(text, (150, 150))
             (ret.left, ret.top) = (xant, yant)
-        
+
+        if ret.top > 400:
+            text = fonte_perdeu.render('VOCE GANHOU', 1, (cor_branca)) #printando perdeu 
+            tela.blit(text, (200, 200))
+            ret2.left = 602
+
+            
         pygame.draw.rect(tela, cor_vermelha, ret) #inserindo retangulo
         pygame.draw.rect(tela, cor_rosa, ret2)
         pygame.display.update() #Chamar atualização na Tela
