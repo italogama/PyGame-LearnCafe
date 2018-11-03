@@ -32,7 +32,8 @@ def main(): #parametros de Display
                 sair = True #no momento que o sair passa a ser True, ele sai do while e executa o Quit
                 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pygame.mouse.set_pos(150, 150) #Movimenta o retangulo ao clicar                
+                pygame.mouse.set_pos(10, 10) #Movimenta o retangulo ao clicar
+                ret2.left = 10 #setar de volta o obstaculo no click
 
         relogio.tick(30) #tick pra atualizar
         tela.fill(cor_branca) #preencher o fundo da tela com cor branca
@@ -52,6 +53,8 @@ def main(): #parametros de Display
         if ret.top > 400:
             text = fonte_perdeu.render('VOCE GANHOU', 1, (cor_branca)) #printando perdeu 
             tela.blit(text, (200, 200))
+            text = fonte_perdeu.render('CLIQUE PARA RECOMECAR', 1, (cor_vermelha)) #printando perdeu 
+            tela.blit(text, (150, 250))
             ret2.left = 602
 
             
