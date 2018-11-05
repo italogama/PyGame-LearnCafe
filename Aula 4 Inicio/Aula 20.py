@@ -11,8 +11,9 @@ def main(): #parametros de Display
     cor_verde = (54,182,112)
     cor_vermelha = (227,57,9)
     cor_rosa = (253, 147, 226)
+    cor_preta = (0, 0, 0)
     sup = pygame.Surface((600, 450))
-    sup.fill(cor_azul)
+    sup.fill(cor_preta)
     
     ret = pygame.Rect(10, 10, 30, 30)
     ret2 = pygame.Rect(10, 70, 555, 6)
@@ -64,18 +65,19 @@ def main(): #parametros de Display
             tela.blit(text, (200, 200))
             text = fonte_perdeu.render('CLIQUE PARA RECOMECAR', 1, (cor_vermelha)) #printando perdeu 
             tela.blit(text, (150, 250))
-            ret2.left, ret3.left = 602
+            ret2.left, ret3.left, ret4.left, ret5.left = 602, 602, 602, 602
+            ret6.left, ret7.left, ret8.left, ret9.left = 602, 602, 602, 602
 
             
         pygame.draw.rect(tela, cor_vermelha, ret) #inserindo retangulo
-        pygame.draw.rect(tela, cor_rosa, ret2)
-        pygame.draw.rect(tela, cor_rosa, ret3)
-        pygame.draw.rect(tela, cor_rosa, ret4)
-        pygame.draw.rect(tela, cor_rosa, ret5)
-        pygame.draw.rect(tela, cor_rosa, ret6)
-        pygame.draw.rect(tela, cor_rosa, ret7)
-        pygame.draw.rect(tela, cor_rosa, ret8)
-        pygame.draw.rect(tela, cor_rosa, ret9)
+        pygame.draw.rect(tela, cor_branca, ret2)
+        pygame.draw.rect(tela, cor_branca, ret3)
+        pygame.draw.rect(tela, cor_branca, ret4)
+        pygame.draw.rect(tela, cor_branca, ret5)
+        pygame.draw.rect(tela, cor_branca, ret6)
+        pygame.draw.rect(tela, cor_branca, ret7)
+        pygame.draw.rect(tela, cor_branca, ret8)
+        pygame.draw.rect(tela, cor_branca, ret9)
         pygame.display.update() #Chamar atualização na Tela
         
     pygame.quit() #Quita o game ao clicar no X
