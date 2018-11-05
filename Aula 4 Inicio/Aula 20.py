@@ -16,7 +16,8 @@ def main(): #parametros de Display
     
     ret = pygame.Rect(10, 10, 30, 30)
     ret2 = pygame.Rect(10, 40, 555, 6)
-    ret2 = pygame.Rect(10, 90, 355, 6)
+    ret3 = pygame.Rect(10, 90, 355, 6)
+    ret4 = pygame.Rect(405, 90, 195, 6)
     sair = False
 
     pygame.font.init()
@@ -45,7 +46,7 @@ def main(): #parametros de Display
         (ret.left, ret.top) = pygame.mouse.get_pos() #Evento de captura do mouse
         ret.left -= ret.width/2   #Coloca cursos no centro do objeto ret
         ret.top -= ret.height/2
-        if ret.colliderect(ret2): #testando colisão com objeto
+        if ret.colliderect(ret2) or ret.colliderect(ret3): #testando colisão com objeto
             text = fonte_perdeu.render('VOCE PERDEU', 1, (cor_branca)) #printando perdeu 
             tela.blit(text, (200, 200))
             pygame.mouse.set_pos(10, 10)
@@ -63,6 +64,8 @@ def main(): #parametros de Display
             
         pygame.draw.rect(tela, cor_vermelha, ret) #inserindo retangulo
         pygame.draw.rect(tela, cor_rosa, ret2)
+        pygame.draw.rect(tela, cor_rosa, ret3)
+        pygame.draw.rect(tela, cor_rosa, ret4)        
         pygame.display.update() #Chamar atualização na Tela
         
     pygame.quit() #Quita o game ao clicar no X
