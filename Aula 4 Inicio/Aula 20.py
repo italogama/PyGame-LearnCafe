@@ -16,6 +16,7 @@ def main(): #parametros de Display
     
     ret = pygame.Rect(10, 10, 30, 30)
     ret2 = pygame.Rect(10, 40, 555, 6)
+    ret2 = pygame.Rect(10, 90, 355, 6)
     sair = False
 
     pygame.font.init()
@@ -33,7 +34,8 @@ def main(): #parametros de Display
                 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pygame.mouse.set_pos(10, 10) #Movimenta o retangulo ao clicar
-                ret2.left = 10 #setar de volta o obstaculo no click
+                main()
+                
 
         relogio.tick(30) #tick pra atualizar
         tela.fill(cor_branca) #preencher o fundo da tela com cor branca
@@ -44,14 +46,15 @@ def main(): #parametros de Display
         ret.left -= ret.width/2   #Coloca cursos no centro do objeto ret
         ret.top -= ret.height/2
         if ret.colliderect(ret2): #testando colisão com objeto
-            text = fonte_perdeu.render('COLIDIU', 1, (cor_vermelha)) #printando perdeu 
-            tela.blit(text, (150, 150))
+            text = fonte_perdeu.render('VOCE PERDEU', 1, (cor_branca)) #printando perdeu 
+            tela.blit(text, (200, 200))
+            pygame.mouse.set_pos(10, 10)
             audio_explosao.play()
             audio_explosao.set_volume(00.1)
             (ret.left, ret.top) = (xant, yant)
 
         if ret.top > 400:
-            text = fonte_perdeu.render('VOCE GANHOU', 1, (cor_branca)) #printando perdeu 
+            text = fonte_ganhou.render('VOCE GANHOU', 1, (cor_branca)) #printando perdeu 
             tela.blit(text, (200, 200))
             text = fonte_perdeu.render('CLIQUE PARA RECOMECAR', 1, (cor_vermelha)) #printando perdeu 
             tela.blit(text, (150, 250))
