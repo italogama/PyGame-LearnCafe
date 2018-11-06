@@ -14,8 +14,8 @@ def main(): #parametros de Display
     cor_rosa = (253, 147, 226)
     sair = False
 
-    imagem = pygame.image.load("nave.png") #inserindo imagem
-    
+    imagem = pygame.image.load("imagens/nave.png") #inserindo imagem
+    (x,y) = (150,150)
         
     while sair != True: #Loop de while, cria uma variavel do tipo event que recebe um evento
 
@@ -25,9 +25,13 @@ def main(): #parametros de Display
                 
             #if event.type == pygame.MOUSEBUTTONDOWN:
 
-            tela.blit(imagem, (100,100))
-            relogio.tick(30)
+            
+            relogio.tick(100)
             tela.fill(cor_branca)
+            tela.blit(imagem, (x,y))
+
+            (x,y) = pygame.mouse.get_pos()
+            
             pygame.display.update() #Chamar atualização na Tela
         
     pygame.quit() #Quita o game ao clicar no X
