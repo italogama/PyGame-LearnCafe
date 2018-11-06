@@ -62,6 +62,7 @@ def main():
     jogador = Player(img_nave)
 
     backg = pygame.image.load("imagens/fundo.png").convert_alpha()
+    imagem_explosao = pygame.image.load("imagens/explosao.png").convert_alpha()
     
     vx, vy = 0,0
     velocidade = 10
@@ -116,19 +117,22 @@ def main():
                         vy = 0
 
                         
-            if colisao(player, ret):
-                colidiu = True
+        if colisao(jogador, ret):
+            colidiu = True
+            jogador.imagem = imagem_explosao
 
-            if colisao == False:
+        if colidiu == False:
+            ret.mover()
+            jogador.mover(vx, vy)
         
 
         relogio.tick(20)
         tela.blit(backg,(0,0))
-        ret.mover() #gerando obstaculos 
+        #ret.mover() #gerando obstaculos 
         ret.cor(tela) #pintando obstaculos
         ret.recriar() #chamando recriação dos obstaculos
         jogador.update(tela) #chamando o jogador na tela
-        jogador.mover(vx, vy)
+        #jogador.mover(vx, vy)
 
         pygame.display.update()
 
