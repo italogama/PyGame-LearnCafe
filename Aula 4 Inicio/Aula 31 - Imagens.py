@@ -16,6 +16,9 @@ def main(): #parametros de Display
 
     imagem = pygame.image.load("imagens/nave.png") #inserindo imagem
     (x,y) = (150,150)
+    vx = 0
+
+    ret = pygame.Rect(250, 300, 20, 500)
         
     while sair != True: #Loop de while, cria uma variavel do tipo event que recebe um evento
 
@@ -23,14 +26,26 @@ def main(): #parametros de Display
             if event.type == pygame.QUIT: #se o evento recebido for o QUIT, o sair passa a ser True
                 sair = True #no momento que o sair passa a ser True, ele sai do while e executa o Quit
                 
-            #if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    vx = -10
 
-            
+                if event.key == pygame.K_RIGHT:
+                    vx = 10
+
+                if event.key == pygame.K_UP:
+                    vx = 0
+
+                if event.key == pygame.K_DOWN:
+                    vx = 0
+
+            x += vx
             relogio.tick(100)
             tela.fill(cor_branca)
             tela.blit(imagem, (x,y))
 
-            (x,y) = pygame.mouse.get_pos()
+            #(x,y) = pygame.mouse.get_pos()
+            pygame.draw.rect(tela, cor_vermelha, ret)
             
             pygame.display.update() #Chamar atualização na Tela
         
