@@ -4,10 +4,10 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, imagem):
         self.imagem = imagem
         self.rect = self.imagem.get_rect()
-        self.rect.top, self.rect.left = (200, 200) #posicao da imagem
+        self.rect.top, self.rect.left = (100, 200) #posicao da imagem
 
     def mover(self, vx, vy):
-        pass
+        self.rect.move_ip(vx, vy)
 
     def update(self, superficie): #parametro de update
         superficie.blit(self.imagem, self.rect) #qnd chamar update ele mostra esses dois objetos
@@ -30,9 +30,12 @@ def main():
         relogio.tick(20)
         tela.fill((200, 200, 200))
         jogador.update(tela)
+        vx, vy = 0,0
+        velocidade = 10
+        leftpress, rightpress, uppress, downpress = False, False, False, False
+        
 
         pygame.display.update()
-
 
     pygame.quit()
 
