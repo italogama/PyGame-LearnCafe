@@ -33,26 +33,44 @@ def main():
                 sair = True
 
             if event.type == pygame.KEYDOWN: #evento de tecla pressionada
-                if event.key == pygame.KEY_LEFT:
+                if event.key == pygame.K_LEFT:
                     leftpress = True
                     vx = - velocidade
 
-                if event.key == pygame.KEY_RIGHT:
+                if event.key == pygame.K_RIGHT:
                     rightpress = True
                     vx = velocidade
 
-                if event.key == pygame.KEY_UP:
+                if event.key == pygame.K_UP:
                     uppress = True
                     vy = - velocidade
 
-                if event.key == pygame.KEY_DOWN:
+                if event.key == pygame.K_DOWN:
                     downpress = True
                     vy = velocidade
 
+            if event.type == pygame.KEYUP: #evento de tecla não pressionada
+                if event.key == pygame.K_LEFT:
+                    leftpress = False
+                    if leftpress: vx = velocidade
+                    else: vx = 0
+
+                if event.key == pygame.K_RIGHT:
+                    rightpress = False
+                    vx = 0
+
+                if event.key == pygame.K_UP:
+                    uppress = False
+                    vy = 0
+
+                if event.key == pygame.K_DOWN:
+                    downpress = False
+                    vy = 0
+
         relogio.tick(20)
         tela.fill((200, 200, 200))
-        jogador.update(tela)
-        
+        jogador.update(tela) #chamando o jogador na tela
+        jogador.mover(vx, vy)
 
         pygame.display.update()
 
