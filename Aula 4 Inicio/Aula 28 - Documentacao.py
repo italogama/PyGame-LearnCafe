@@ -103,7 +103,7 @@ def main(): #parametros de Display
         segundos = pygame.time.get_ticks()/1000
         segundos = str(segundos)
         contador = texto.render(segundos, 0, cor_branca)
-        sup.blit(contador, (300,10))
+        tela.blit(contador, (300,10))
         
         pygame.draw.rect(tela, cor_vermelha, ret) #inserindo retangulo
         pygame.draw.rect(tela, cor_rosa, ret2)

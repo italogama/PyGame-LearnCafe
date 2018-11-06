@@ -1,0 +1,37 @@
+import pygame
+import random
+
+def main(): #parametros de Display
+    #As definições dos objetos(variaveis)
+    pygame.init() #Inicializando o pygame
+    tela = pygame.display.set_mode([600, 600]) #Setando a dimensao da tela
+    pygame.display.set_caption("Iniciando com PyGame") #Exibindo titulo do game
+    relogio = pygame.time.Clock()
+    cor_branca = (255,255,255)
+    cor_azul = (108,194,236) #variaveis de corer, # RGB
+    cor_verde = (54,182,112)
+    cor_vermelha = (227,57,9)
+    cor_rosa = (253, 147, 226)
+    sair = False
+
+    imagem = pygame.image.load("nave.png") #inserindo imagem
+    
+        
+    while sair != True: #Loop de while, cria uma variavel do tipo event que recebe um evento
+
+        for event in pygame.event.get(): #ao clicar no X ele entra na condição IF
+            if event.type == pygame.QUIT: #se o evento recebido for o QUIT, o sair passa a ser True
+                sair = True #no momento que o sair passa a ser True, ele sai do while e executa o Quit
+                
+            #if event.type == pygame.MOUSEBUTTONDOWN:
+
+            tela.blit(imagem, (100,100))
+            relogio.tick(30)
+            tela.fill(cor_branca)
+            pygame.display.update() #Chamar atualização na Tela
+        
+    pygame.quit() #Quita o game ao clicar no X
+        
+        
+
+main()
