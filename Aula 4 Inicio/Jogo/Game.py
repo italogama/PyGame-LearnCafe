@@ -127,7 +127,7 @@ def main():
             colidiu = True
             jogador.imagem = imagem_explosao
             pygame.mixer.music.stop()
-            som_explosao()
+            som_explosao.play()
 
         if colidiu == False:
             ret.mover()
