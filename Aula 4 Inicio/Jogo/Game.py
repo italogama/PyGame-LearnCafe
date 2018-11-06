@@ -12,3 +12,12 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, superficie):
         pass
+
+    def main():
+        import pygame
+        pygame.init()
+        tela = pygame.display.set_mode(480, 300))
+        sair = False
+        relogio = pygame.time.Clock()
+
+        img_nave = pygame.image.load("imagens/nave.png").convert_alpha()
