@@ -68,12 +68,19 @@ def main():
     pygame.mixer.music.play(3)
 
     som_explosao = pygame.mixer.Sound("audios/explosao2.wav")
+    som_mov = pygame.mixer.Sound("audios/som2.wav")
     
     
     vx, vy = 0,0
     velocidade = 10
     leftpress, rightpress, uppress, downpress = False, False, False, False
 
+    texto = pygame.font.SysFont("Arial", 30, True, False)
+    segundos = pygame.time.get_ticks()/1000
+    segundos = str(segundos)
+    contador = texto.render(segundos, 0, cor_branca)
+    tela.blit(contador, (350,10))
+    
     ret = Recs(30)
     colidiu = False
 
@@ -88,18 +95,22 @@ def main():
                     if event.key == pygame.K_LEFT:
                         leftpress = True
                         vx = - velocidade
+                        som_mov.play()
 
                     if event.key == pygame.K_RIGHT:
                         rightpress = True
                         vx = velocidade
+                        som_mov.play()
 
                     if event.key == pygame.K_UP:
                         uppress = True
                         vy = - velocidade
+                        som_mov.play()
 
                     if event.key == pygame.K_DOWN:
                         downpress = True
                         vy = velocidade
+                        som_mov.play()
 
                 if event.type == pygame.KEYUP: #evento de tecla não pressionada
                     if event.key == pygame.K_LEFT:
