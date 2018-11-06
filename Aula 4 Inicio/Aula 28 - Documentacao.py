@@ -12,7 +12,7 @@ def main(): #parametros de Display
     cor_verde = (54,182,112)
     cor_vermelha = (227,57,9)
     cor_rosa = (253, 147, 226)
-    sup = pygame.Surface((200, 200))
+    sup = pygame.Surface((280, 280))
     sup.fill(cor_azul)
 
     sup2 = pygame.Surface((100, 100))
@@ -34,9 +34,19 @@ def main(): #parametros de Display
 
     listaret = []
 
-    fox x in range(15):
+    for x in range(15):
+        h = random.randrange(20, 60)
+        w = random.randrange(15, 45)
+        x = random.randrange(280)
+        y = random.randrange(280)
+        listaret.append(pygame.Rect(x, y, w, h))
         
     while sair != True: #Loop de while, cria uma variavel do tipo event que recebe um evento
+
+        for rets in listaret:
+            pygame.draw.rect(sup, cor_azul, rets)
+
+
         for event in pygame.event.get(): #ao clicar no X ele entra na condição IF
             if event.type == pygame.QUIT: #se o evento recebido for o QUIT, o sair passa a ser True
                 sair = True #no momento que o sair passa a ser True, ele sai do while e executa o Quit
