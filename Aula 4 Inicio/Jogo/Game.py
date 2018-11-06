@@ -14,6 +14,7 @@ class Player(pygame.sprite.Sprite):
 
 def main():
     import pygame
+    #declaração das variaveis (objetos)
     pygame.init()
     tela = pygame.display.set_mode((480, 300)) #tamanho da area que vai utilizar
     sair = False
@@ -22,17 +23,35 @@ def main():
     img_nave = pygame.image.load("../imagens/nave.png").convert_alpha()
     jogador = Player(img_nave)
 
+    vx, vy = 0,0
+    velocidade = 10
+    leftpress, rightpress, uppress, downpress = False, False, False, False
+
     while sair != True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sair = True
 
+            if event.type == pygame.KEYDOWN: #evento de tecla pressionada
+                if event.key == pygame.KEY_LEFT:
+                    leftpress = True
+                    vx = - velocidade
+
+                if event.key == pygame.KEY_RIGHT:
+                    rightpress = True
+                    vx = velocidade
+
+                if event.key == pygame.KEY_UP:
+                    uppress = True
+                    vy = - velocidade
+
+                if event.key == pygame.KEY_DOWN:
+                    downpress = True
+                    vy = velocidade
+
         relogio.tick(20)
         tela.fill((200, 200, 200))
         jogador.update(tela)
-        vx, vy = 0,0
-        velocidade = 10
-        leftpress, rightpress, uppress, downpress = False, False, False, False
         
 
         pygame.display.update()
