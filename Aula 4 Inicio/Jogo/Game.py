@@ -2,12 +2,12 @@ import pygame
 import random
 
 
-class Recs(object):
+class Recs(object): #função dos obstaculos (retangulos)
     def __init__(self, numeroinicial):
         self.lista = [] #array
         for x in range (numeroinicial): #vai pecorrer o for ate a posição do numero inicial
             leftrandom = random.randrange(2, 560)
-            toptrandom = random.randrange(-580, -10)
+            toprandom = random.randrange(-580, -10) #pra começar fora da tela
             width = random.randrange(10, 30)
             height = random.randrange(15, 30)
             self.lista.append(pygame.Rect(leftrandom, toprandom, width, height))
@@ -19,6 +19,8 @@ class Recs(object):
     def cor(self, superficie):
         for retangulo in self.lista:
             pygame.draw.rect(superficie, (165, 214, 254), retangulo)
+
+    def recriar():
     
 class Player(pygame.sprite.Sprite):
     def __init__(self, imagem):
@@ -49,7 +51,7 @@ def main():
     velocidade = 10
     leftpress, rightpress, uppress, downpress = False, False, False, False
 
-    
+    ret = Recs(30)    
 
     while sair != True:
         for event in pygame.event.get():
@@ -97,8 +99,8 @@ def main():
 
         relogio.tick(20)
         tela.blit(backg,(0,0))
-        Recs.mover()
-        Recs.pintar(tela)
+        ret.mover() #gerando obstaculos 
+        ret.cor(tela) #pintando obstaculos 
         jogador.update(tela) #chamando o jogador na tela
         jogador.mover(vx, vy)
 
