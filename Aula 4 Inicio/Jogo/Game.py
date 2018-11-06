@@ -76,10 +76,6 @@ def main():
     leftpress, rightpress, uppress, downpress = False, False, False, False
 
     texto = pygame.font.SysFont("Arial", 30, True, False)
-    segundos = pygame.time.get_ticks()/1000
-    segundos = str(segundos)
-    contador = texto.render(segundos, 0, cor_branca)
-    tela.blit(contador, (350,10))
     
     ret = Recs(30)
     colidiu = False
@@ -143,10 +139,17 @@ def main():
         if colidiu == False:
             ret.mover()
             jogador.mover(vx, vy)
+            
+            tela.blit(backg,(0,0))
+            segundos = pygame.time.get_ticks()/1000
+            segundos = str(segundos)
+            contador = texto.render(segundos, 0, (255,255,255))
+            tela.blit(contador, (350,10)) #chamanddo contador
+            
         
 
         relogio.tick(20)
-        tela.blit(backg,(0,0))
+        #tela.blit(backg,(0,0))
         #ret.mover() #gerando obstaculos 
         ret.cor(tela) #pintando obstaculos
         ret.recriar() #chamando recriação dos obstaculos
