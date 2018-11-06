@@ -61,6 +61,7 @@ def main(): #parametros de Display
 
             if sprite.rect.colliderect(ret):
                 sprite.rect.left = oldx
+                sprite.rect.top = oldy
             
             x += vx
             y += vy
@@ -72,6 +73,7 @@ def main(): #parametros de Display
             pygame.draw.rect(tela, cor_vermelha, ret)
 
             oldx = sprite.rect.left
+            oldy = sprite.rect.top
             tela.blit(sprite.image, sprite.rect)
             sprite.rect.move_ip(vx, vy)
             pygame.display.update() #Chamar atualização na Tela
