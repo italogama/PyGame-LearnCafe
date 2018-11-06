@@ -2,7 +2,7 @@ import pygame
 import random
 
 
-class Recs(objeto):
+class Recs(object):
     def __init__(self, numeroinicial):
         self.lista = [] #array
         for x in range (numeroinicial): #vai pecorrer o for ate a posição do numero inicial
@@ -11,7 +11,15 @@ class Recs(objeto):
             width = random.randrange(10, 30)
             height = random.randrange(15, 30)
             self.lista.append(pygame.Rect(leftrandom, toprandom, width, height))
-            
+
+    def mover(self):
+        for retangulo in self.lista:
+            retangulo.move_ip(0, 2)
+
+    def cor(self, superficie):
+        for retangulo in self.lista:
+            pygame.draw.rect(superficie, (165, 214, 254), retangulo)
+    
 class Player(pygame.sprite.Sprite):
     def __init__(self, imagem):
         self.imagem = imagem
@@ -40,6 +48,8 @@ def main():
     vx, vy = 0,0
     velocidade = 10
     leftpress, rightpress, uppress, downpress = False, False, False, False
+
+    
 
     while sair != True:
         for event in pygame.event.get():
@@ -87,6 +97,8 @@ def main():
 
         relogio.tick(20)
         tela.blit(backg,(0,0))
+        Recs.mover()
+        Recs.pintar(tela)
         jogador.update(tela) #chamando o jogador na tela
         jogador.mover(vx, vy)
 
