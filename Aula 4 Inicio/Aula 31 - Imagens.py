@@ -21,11 +21,11 @@ def main(): #parametros de Display
 
     ret = pygame.Rect(250, 300, 20, 500)
 
-    sprit = pygame.sprite.Sprit()
+    sprite = pygame.sprite.Sprite()
     sprite.image = imagem
-    sprit.rect = imagem.get_rect()
-    sprit.rect.top = 50
-    sprit.rect.left = 50
+    sprite.rect = imagem.get_rect()
+    sprite.rect.top = 50
+    sprite.rect.left = 50
         
     while sair != True: #Loop de while, cria uma variavel do tipo event que recebe um evento
 
@@ -59,15 +59,21 @@ def main(): #parametros de Display
                 if event.key == pygame.K_UP:
                     vy = 0
 
+            if sprite.rect.colliderect(ret):
+                sprite.rect.left = oldx
+            
             x += vx
             y += vy
             relogio.tick(100)
             tela.fill(cor_branca)
-            tela.blit(imagem, (x,y))
+            #tela.blit(imagem, (x,y))
 
             #(x,y) = pygame.mouse.get_pos()
             pygame.draw.rect(tela, cor_vermelha, ret)
-            
+
+            oldx = sprite.rect.left
+            tela.blit(sprite.image, sprite.rect)
+            sprite.rect.move_ip(vx, vy)
             pygame.display.update() #Chamar atualização na Tela
         
     pygame.quit() #Quita o game ao clicar no X
