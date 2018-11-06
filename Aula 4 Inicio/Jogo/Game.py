@@ -41,6 +41,15 @@ class Player(pygame.sprite.Sprite):
     def update(self, superficie): #parametro de update
         superficie.blit(self.imagem, self.rect) #qnd chamar update ele mostra esses dois objetos
 
+
+def colisao(player, recs): #criando colisão
+    for rec in recs.lista: #rec é um dos retangulos da lista de retangulos
+        if player.rect.colliderect(rec):
+            return True
+
+    return False
+    
+
 def main():
     import pygame
     #declaração das variaveis (objetos)
@@ -58,51 +67,60 @@ def main():
     velocidade = 10
     leftpress, rightpress, uppress, downpress = False, False, False, False
 
-    ret = Recs(30)    
+    ret = Recs(30)
+    colidiu = False
 
     while sair != True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sair = True
 
-            if event.type == pygame.KEYDOWN: #evento de tecla pressionada
-                if event.key == pygame.K_LEFT:
-                    leftpress = True
-                    vx = - velocidade
+            if colidiu == False:
 
-                if event.key == pygame.K_RIGHT:
-                    rightpress = True
-                    vx = velocidade
+                if event.type == pygame.KEYDOWN: #evento de tecla pressionada
+                    if event.key == pygame.K_LEFT:
+                        leftpress = True
+                        vx = - velocidade
 
-                if event.key == pygame.K_UP:
-                    uppress = True
-                    vy = - velocidade
+                    if event.key == pygame.K_RIGHT:
+                        rightpress = True
+                        vx = velocidade
 
-                if event.key == pygame.K_DOWN:
-                    downpress = True
-                    vy = velocidade
+                    if event.key == pygame.K_UP:
+                        uppress = True
+                        vy = - velocidade
 
-            if event.type == pygame.KEYUP: #evento de tecla não pressionada
-                if event.key == pygame.K_LEFT:
-                    leftpress = False
-                    if rightpress:vx = velocidade
-                    else:vx = 0
+                    if event.key == pygame.K_DOWN:
+                        downpress = True
+                        vy = velocidade
 
-                if event.key == pygame.K_RIGHT:
-                    rightpress = False
-                    if leftpress:vx = -velocidade
-                    else:vx = 0
+                if event.type == pygame.KEYUP: #evento de tecla não pressionada
+                    if event.key == pygame.K_LEFT:
+                        leftpress = False
+                        if rightpress:vx = velocidade
+                        else:vx = 0
 
-                if event.key == pygame.K_UP:
-                    uppress = False
-                    if downpress:vx = velocidade
-                    vy = 0
+                    if event.key == pygame.K_RIGHT:
+                        rightpress = False
+                        if leftpress:vx = -velocidade
+                        else:vx = 0
 
-                if event.key == pygame.K_DOWN:
-                    downpress = False
-                    if uppress:vx = -velocidade
-                    vy = 0
+                    if event.key == pygame.K_UP:
+                        uppress = False
+                        if downpress:vx = velocidade
+                        vy = 0
 
+                    if event.key == pygame.K_DOWN:
+                        downpress = False
+                        if uppress:vx = -velocidade
+                        vy = 0
+
+                        
+            if colisao(player, ret):
+                colidiu = True
+
+            if colisao == False:
+        
 
         relogio.tick(20)
         tela.blit(backg,(0,0))
