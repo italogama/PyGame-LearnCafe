@@ -67,7 +67,7 @@ def main():
     pygame.mixer.music.load("audios/musica.mp3")
     pygame.mixer.music.play(3)
 
-    som_explosao = pygame.mixer.Sound("audios/explosao.wav")
+    som_explosao = pygame.mixer.Sound("audios/explosao2.wav")
     
     
     vx, vy = 0,0
