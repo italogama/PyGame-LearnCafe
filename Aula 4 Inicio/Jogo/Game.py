@@ -20,7 +20,14 @@ class Recs(object): #função dos obstaculos (retangulos)
         for retangulo in self.lista:
             pygame.draw.rect(superficie, (165, 214, 254), retangulo)
 
-    def recriar():
+    def recriar(self):
+        for x in range (len(self.lista)):
+            if self.lista[x].top > 481: #sempre que passar da tela, ele recria os obstaculos
+                leftrandom = random.randrange(2, 560)
+                toprandom = random.randrange(-580, -10) #pra começar fora da tela
+                width = random.randrange(10, 30)
+                height = random.randrange(15, 30)
+                self.lista[x] = (pygame.Rect(leftrandom, toprandom, width, height)) #garantindo que so vai gerar um objeto e nao a lista toda
     
 class Player(pygame.sprite.Sprite):
     def __init__(self, imagem):
@@ -100,7 +107,8 @@ def main():
         relogio.tick(20)
         tela.blit(backg,(0,0))
         ret.mover() #gerando obstaculos 
-        ret.cor(tela) #pintando obstaculos 
+        ret.cor(tela) #pintando obstaculos
+        ret.recriar() #chamando recriação dos obstaculos
         jogador.update(tela) #chamando o jogador na tela
         jogador.mover(vx, vy)
 
