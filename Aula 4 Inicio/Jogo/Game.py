@@ -63,6 +63,12 @@ def main():
 
     backg = pygame.image.load("imagens/fundo.png").convert_alpha()
     imagem_explosao = pygame.image.load("imagens/explosao.png").convert_alpha()
+
+    pygame.mixer.music.load("audios/musica.mp3")
+    pygame.mixer.music.play(3)
+
+    som_explosao = pygame.mixer.Sound("audios/explosao.wav")
+    
     
     vx, vy = 0,0
     velocidade = 10
@@ -120,6 +126,8 @@ def main():
         if colisao(jogador, ret):
             colidiu = True
             jogador.imagem = imagem_explosao
+            pygame.mixer.music.stop()
+            som_explosao()
 
         if colidiu == False:
             ret.mover()
