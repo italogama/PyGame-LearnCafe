@@ -75,7 +75,7 @@ def main():
     velocidade = 10
     leftpress, rightpress, uppress, downpress = False, False, False, False
 
-    texto = pygame.font.SysFont("Arial", 30, True, False)
+    texto = pygame.font.SysFont("Arial", 15, True, False)
     
     ret = Recs(30)
     colidiu = False
@@ -143,8 +143,8 @@ def main():
             tela.blit(backg,(0,0))
             segundos = pygame.time.get_ticks()/1000
             segundos = str(segundos)
-            contador = texto.render(segundos, 0, (255,255,255))
-            tela.blit(contador, (350,10)) #chamanddo contador
+            contador = texto.render("Pontução:{}".format(segundos), 0, (255,255,255))
+            tela.blit(contador, (360,10)) #chamando contador
             
         
 
