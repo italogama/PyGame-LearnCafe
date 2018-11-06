@@ -20,9 +20,11 @@ def main():
     sair = False
     relogio = pygame.time.Clock()
 
-    img_nave = pygame.image.load("../imagens/nave.png").convert_alpha()
+    img_nave = pygame.image.load("imagens/nave.png").convert_alpha()
     jogador = Player(img_nave)
 
+    backg = pygame.image.load("imagens/fundo.png").convert_alpha()
+    
     vx, vy = 0,0
     velocidade = 10
     leftpress, rightpress, uppress, downpress = False, False, False, False
@@ -52,23 +54,27 @@ def main():
             if event.type == pygame.KEYUP: #evento de tecla não pressionada
                 if event.key == pygame.K_LEFT:
                     leftpress = False
-                    if leftpress: vx = velocidade
-                    else: vx = 0
+                    if rightpress:vx = velocidade
+                    else:vx = 0
 
                 if event.key == pygame.K_RIGHT:
                     rightpress = False
-                    vx = 0
+                    if leftpress:vx = -velocidade
+                    else:vx = 0
 
                 if event.key == pygame.K_UP:
                     uppress = False
+                    if downpress:vx = velocidade
                     vy = 0
 
                 if event.key == pygame.K_DOWN:
                     downpress = False
+                    if uppress:vx = -velocidade
                     vy = 0
 
+
         relogio.tick(20)
-        tela.fill((200, 200, 200))
+        tela.blit(imagem_backg,(0,0))
         jogador.update(tela) #chamando o jogador na tela
         jogador.mover(vx, vy)
 
