@@ -17,8 +17,15 @@ def main(): #parametros de Display
     imagem = pygame.image.load("imagens/nave.png") #inserindo imagem
     (x,y) = (150,150)
     vx = 0
+    vy = 0
 
     ret = pygame.Rect(250, 300, 20, 500)
+
+    sprit = pygame.sprite.Sprit()
+    sprite.image = imagem
+    sprit.rect = imagem.get_rect()
+    sprit.rect.top = 50
+    sprit.rect.left = 50
         
     while sair != True: #Loop de while, cria uma variavel do tipo event que recebe um evento
 
@@ -28,18 +35,32 @@ def main(): #parametros de Display
                 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    vx = -10
+                    vx -= 5
 
                 if event.key == pygame.K_RIGHT:
-                    vx = 10
+                    vx += 5
+
+                if event.key == pygame.K_DOWN:
+                    vy += 5
 
                 if event.key == pygame.K_UP:
+                    vy -= 5
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT:
+                    vx = 0
+
+                if event.key == pygame.K_RIGHT:
                     vx = 0
 
                 if event.key == pygame.K_DOWN:
-                    vx = 0
+                    vy = 0
+
+                if event.key == pygame.K_UP:
+                    vy = 0
 
             x += vx
+            y += vy
             relogio.tick(100)
             tela.fill(cor_branca)
             tela.blit(imagem, (x,y))
